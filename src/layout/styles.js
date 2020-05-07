@@ -20,6 +20,7 @@ export const Styled = styled.div`
                 min-height: inherit;
                 max-width: 1200px;
                 margin: auto;
+                padding: 0px 10px;
                 .logo{
                     color: ${props => props.theme.orange};
                     font-size: ${props => props.theme.fontSizeLg};
@@ -95,7 +96,7 @@ export const Input = styled.input`
     border: 1px solid #383838;
     flex: 1;
     border-radius: 10px;
-    min-width: 300px;
+    min-width: 260px;
     outline: none;
     background: linear-gradient(to right,#191919 0,#242424 157%);
     color: #ff8338;
