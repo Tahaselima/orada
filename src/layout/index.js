@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ToastProvider } from 'react-toast-notifications';
 
-import Notification from './Notification';
 import { Styled } from './styles';
 import Header from './Header';
 import Content from './Content';
@@ -26,10 +25,9 @@ class BasicLayout extends React.Component {
 		return (
 			<Styled theme={theme}>
 				<ToastProvider 
-					components={{ Toast: Notification }}
 					autoDismiss
 					placement='top-center'
-					autoDismissTimeout={4000}
+					autoDismissTimeout={5000}
 					>
 					<div className="public-layout">
 							<Header/>

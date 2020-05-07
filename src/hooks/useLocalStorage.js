@@ -35,5 +35,29 @@ export default function useLocalStorage(key, initialValue) {
         }
     };
 
-    return [storedValue, setValue, deleteValue];
+    const voteUpValue = value => {
+        try {
+            let items = JSON.parse(localStorage.getItem(key));
+            items.find(l => l.id === value.id).votes += 1
+            items.find(l => l.id === value.id).updatedDate = new Date()
+            setStoredValue(items);
+            window.localStorage.setItem(key, JSON.stringify(items));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const voteDownValue = value => {
+        try {
+            let items = JSON.parse(localStorage.getItem(key));
+            items.find(l => l.id === value.id).votes -= 1
+            items.find(l => l.id === value.id).updatedDate = new Date()
+            setStoredValue(items);
+            window.localStorage.setItem(key, JSON.stringify(items));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    return [storedValue, setValue, deleteValue, voteUpValue, voteDownValue];
 }

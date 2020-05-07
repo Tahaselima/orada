@@ -1,10 +1,11 @@
 import React from 'react';
 import { GoBack, NewlinkForm } from '../../containers'
-import useLocalStorage from '../../hooks/useLocalStorage'
+import { LOCAL_STORAGE_KEY } from '../../helpers/constant'
+
+import { useLocalStorage } from '../../hooks'
 
 export function Newlink() {
-  // eslint-disable-next-line no-unused-vars
-  const [links, setLink] = useLocalStorage('LINK_LIST','');
+  const [links, setLink] = useLocalStorage(LOCAL_STORAGE_KEY,'');
 
   return (
     <div>

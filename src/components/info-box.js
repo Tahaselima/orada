@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Links } from '../layout/styles'
 
+import { ArrowIosForwardOutline } from '@styled-icons/evaicons-outline'
 export default () => {
     return (
-    <Link className="empty-list" to="/new">
-        <span>Liste Boş :( Ekle Bakalım -></span>
-    </Link>
+    <Links className="empty-list" to="/new">
+        <span>Liste Boş :( Ekle Bakalım <ArrowIosForwardOutline size="20"/></span>
+    </Links>
     )
 }

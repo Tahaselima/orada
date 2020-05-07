@@ -1,60 +1,11 @@
 import React from 'react'
-import Modal from './modal';
+import { Modal } from './';
 import { useToasts } from 'react-toast-notifications'
-import useModal  from '../hooks/useModal'
-
-import styled from 'styled-components';
-
-const Styled = styled.div`
-    position: relative;
-    font-size: 1em;
-    margin: 1em;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    border: 1px solid #191919;
-    border-radius: 10px;
-    background-color: #1b1b1b;
-    transition: 0.3s;
-    display:flex;
-    align-items: center;
-        &:hover {
-            background-color: #232323;
-            border: 1px solid #FF6000;
-            .delete-button{
-                position: absolute;
-                display: block;
-                right: -5px;
-                padding: 1em;
-                top: -5px;
-                border-radius: 10px;
-                background: #191919;
-                border: 1px solid #FF6000;
-                color: #FFF;
-                line-height: 8px;
-                cursor: pointer;
-            }
-        }
-        
-    & .delete-button {
-        display: none;
-    }
-    .list {
-        &-vote {
-        background: linear-gradient(to right,#242424 0,#191919 157%);
-        border: 1px solid #191919;
-        padding: 20px;
-        text-align: center;
-        border-radius: 5px;
-        margin-right: 20px;
-            & > div:first-child {
-                font-size: 20px;
-                margin-bottom: 5px;
-                }
-        }
-    }
-`;
-
+import { useModal }  from '../hooks'
+import { 
+    ArrowIosUpwardOutline, ArrowIosDownwardOutline 
+    } from '@styled-icons/evaicons-outline'
+import { Button, Styled } from './styles'
 
 export default function ListNodes(props) {
     const { addToast } = useToasts()
@@ -73,7 +24,7 @@ export default function ListNodes(props) {
         action: (close) => {
             toggle()
             props.deleteAction(data)
-            addToast(`Link removed successfully`, {
+            addToast(`${data.linkName} removed successfully`, {
                 appearance: 'success'
             })
         }
@@ -87,8 +38,18 @@ export default function ListNodes(props) {
                         <div>Vote</div>
                     </div>
                     <div className="list-info">
-                        <div> { item.linkName } </div>
-                        <div> ({ item.linkUrl }) </div>
+                        <div className="list-info-name"> { item.linkName } </div>
+                        <div className="list-info-url"> ({ item.linkUrl }) </div>
+                        <div className="list-vote-action">
+                            <Button onClick={() => props.voteUp(item)}> 
+                                <ArrowIosUpwardOutline size="32" /> Up Vote 
+                            </Button>
+                            <Button 
+                                disabled={!item.votes} 
+                                onClick={() => props.voteDown(item)}> 
+                                <ArrowIosDownwardOutline size="32" />  Down Vote 
+                            </Button>
+                        </div>
                     </div>
                     <button
                         className="delete-button"

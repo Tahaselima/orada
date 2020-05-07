@@ -1,11 +1,13 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Links } from '../layout/styles'
+
+import { ArrowIosBackOutline } from '@styled-icons/evaicons-outline'
 
 export default () => {
     return (
-    <Link className="GoBackButton" to="/">
-        <span className="m-left-10">Return To List</span>
-    </Link>
+    <Links className="go-back-link" to="/">
+        <span><ArrowIosBackOutline size="20"/> Return To List</span>
+    </Links>
     )
 }
