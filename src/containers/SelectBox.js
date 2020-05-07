@@ -7,6 +7,8 @@ export default function SelectBox(props) {
         {
             props.sortOptions.map((o,index) => {
             return (<option 
+                disabled={o.disabled}
+                selected={o.selected}
                 key={index}
                 value={o.value}>
                 {o.label}
