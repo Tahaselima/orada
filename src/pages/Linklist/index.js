@@ -18,10 +18,14 @@ export function Linklist() {
   return (
     <div>
       <GoNew/>
-      <SelectBox 
-        setType={(e) => setType(links, e)}
-        sortOptions={sortOptions}
-      />
+      { 
+        sortedList.length 
+        ? <SelectBox 
+            setType={(e) => setType(links, e)}
+            sortOptions={sortOptions}
+          />
+        : null
+      }
       <Links 
         links={currentData()} 
         deleteAction={ (data) => deleteLink(data)}

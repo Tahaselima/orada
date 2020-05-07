@@ -60,6 +60,7 @@ export const Links = styled(Link)`
   display: block;
   margin: auto;
   max-width: fit-content;
+  margin-top: 15px;
   &:hover {
     background: linear-gradient(to right,#191919 0,#242424 157%);
     border: 1px solid #191919;
